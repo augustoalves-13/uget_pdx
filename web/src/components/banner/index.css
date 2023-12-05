@@ -1,0 +1,50 @@
+.banner {
+  color: #fff;
+  background: linear-gradient(122deg, #000 0%, #000 56.57%, rgba(132, 95, 0, 0.96) 58.43%, #000 60.53%, #000 100%);
+  height: 800px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-banner{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+}
+
+.img-content{
+  height: 50%;
+  width: 300px;
+}
+
+.slide-txt img{
+  height: 80px;
+  width: 341px;
+}
+
+.slide-txt p {
+  margin: 20px 0% 20px 0%;
+  font-size: 18px;
+  width: 450px;
+}
+
+@media(max-width: 800px){
+  .container{
+      flex-direction: column-reverse;
+  }
+
+  .slide-txt{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  p{
+      width: 95%;
+      font-size: 18px;
+      text-align: center;
+  }
+}

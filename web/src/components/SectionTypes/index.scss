@@ -1,0 +1,36 @@
+.type-container{
+  height: 800px;
+  width: 100%;
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 10%;
+
+  
+}
+
+.type-card{
+  height: 40%;
+  width: 20%;
+  border-radius: 25px;
+  box-shadow: 0px 0px 10px 0px #00000038;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.card-type{
+  transition: .5s;
+}
+
+.type-card:hover{
+  transform: scale(1.05);
+}
+
+.type-modal{
+  z-index: 1000;
+  height: 80vh;
+  width: 40vw;
+  border-radius: 25px;
+  box-shadow: 0px 0px 10px 0px #00000038;
+}
