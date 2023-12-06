@@ -1,47 +1,13 @@
 import './index.scss'
 import logo from '../../assets/images/logo.png'
 import { useEffect, useState } from 'react'
-import About from '../../assets/images/header/About.svg'
-import home from '../../assets/images/header/home.svg'
-import pdx from '../../assets/images/header/pdx.svg'
-import pdv from '../../assets/images/header/pdv.svg'
+import data from '../../data/Header'
 
-const Header = () => {
+const Header = (props) => {
   const [selected, setSelected] = useState(false)
   const [ scrolled, setScrolled ] = useState(false)
 
-  const data = [
-    {
-      id:1, 
-      name:'Home',
-      path:'' ,
-      img: home,
-    },
-    {
-      id:2, 
-      name:'Sobre Nós', 
-      path:'', 
-      img: About,
-    },
-    {
-      id:3, 
-      name:'PDX',        
-      path: '', 
-      img: pdx,
-    },
-    {
-      id:4, 
-      name:'PDV',        
-      path: '', 
-      img: pdv,
-    },
-    {
-      id:5, 
-      name:'Notes',      
-      path: '', 
-      img: pdv,
-    },
-  ]
+    
 
   useEffect(()=>{
     const onScroll = () => {
@@ -78,6 +44,11 @@ const Header = () => {
           </NavContent>
         ))}
       </nav>
+      <button onClick={props.onClick} className={ props.class ? 'close-side' : 'open-side' } >
+          <span id='first'></span>
+          <span id='second'></span>
+          <span id='third'></span>
+      </button>
     </header>
   )
 }

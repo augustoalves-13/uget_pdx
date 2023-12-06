@@ -3,8 +3,12 @@ import Header from "../../components/header"
 import SectionHome from '../../components/sectionHome'
 import Banner from '../../components/banner'
 import img from '../../assets/images/logo.png'
+import Sidebar from '../../components/sidebar'
+import { useState } from 'react'
 
 const HomePage = () => {
+  const [ sideVisible, setSideVisible ] = useState(false)
+
 
   const data = [
     {
@@ -45,8 +49,14 @@ const HomePage = () => {
   ]
 
   return (
-    <div className="container">
-      <Header />
+    <div className="main-container">
+      <Header 
+        class={sideVisible}
+        onClick={()=>setSideVisible(!sideVisible)}
+      />
+      <Sidebar
+        visible={sideVisible}
+      />
       <Banner
         img={img}
         txt='Somos uma holding de empresas de com soluções em tecnologia, automação e inteligência.

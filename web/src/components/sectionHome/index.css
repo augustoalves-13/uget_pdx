@@ -7,9 +7,10 @@
   align-items: center;
 }
 
-.f2-pdx > .container-banner{
+.f2-pdx > .container-section{
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -51,7 +52,7 @@
       flex-direction: column-reverse;
   }
 
-  .container-banner{
+  .container-section{
     gap: 50px;
     flex-direction: column;
   }
