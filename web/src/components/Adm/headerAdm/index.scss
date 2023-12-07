@@ -1,0 +1,27 @@
+.hdr-container{
+  position: absolute;
+  top: 0;
+  height: 70px;
+  width: 85vw;
+  background-color: #fff;
+  display: flex;
+  align-items: center;  
+  justify-content: space-between;
+  padding: 0 3%;
+
+  p{
+    font-weight: 600;
+  }
+
+  .user-radio{
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+    background-color: #ffc403;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+} 

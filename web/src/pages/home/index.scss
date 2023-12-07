@@ -3,3 +3,12 @@
   flex-direction: column;
   width: 100vw;
 }
+
+.f2-pdx:nth-child(odd){
+  background-color: #f8f8f8;
+}
+
+.container-section:nth-child(odd){
+  display: flex;
+  flex-direction: row-reverse;
+}

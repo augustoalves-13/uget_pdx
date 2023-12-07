@@ -1,0 +1,28 @@
+.section-adm{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 85%;
+  width: 80%;
+  background-color: #fff;
+  box-shadow: 0px 0px 14px 1px rgba(173, 173, 173, 0.25);
+  padding: 30px;
+
+  .title-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    h3{
+      color: #505050;
+    }
+
+    aside{
+      height: 35px;
+      width: 10px;
+      background-color: #fcb803;
+      border-radius: 20px;
+    }
+  }
+  
+}
