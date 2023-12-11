@@ -8,6 +8,8 @@ import PdxPage from './pages/Produtos/pdx';
 import LoginPage from './pages/Adm/login';
 import HomeAdm from './pages/Adm/home';
 import HomeController from './pages/Adm/HomePage';
+import Listar from './pages/Adm/listar';
+import EditPage from './pages/Adm/administrador';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,7 +18,9 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='/admin' element={<LoginPage/>} />
+        <Route path='/admin/listar' element={<Listar />} /> 
         <Route path='/admin/controle/home' element={<HomeController/>} />
+        <Route path='/admin/controle/editar' element={<EditPage/>} />
         <Route path='/admin/home' element={<HomeAdm/>} />
         <Route path='/' element={<HomePage />} />
         <Route path='/pdx' element={<PdxPage />} />

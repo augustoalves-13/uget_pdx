@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import { ShowProducts } from '../../api/product'
 
 const HomePage = () => {
-  const [sideVisible, setSideVisible ] = useState(false)
+  const [sideVisible, setSideVisible] = useState(false)
   const [data, setData] = useState([])
 
   //const data = [
@@ -49,7 +49,7 @@ const HomePage = () => {
   //  },
   //]
 
-  useEffect(()=>{
+  useEffect(() => {
     const ListProduct = async () => {
       const resp = await ShowProducts()
       console.log(resp)
@@ -57,13 +57,13 @@ const HomePage = () => {
     }
 
     ListProduct()
-  },[])
+  }, [])
 
   return (
     <div className="main-container">
-      <Header 
+      <Header
         class={sideVisible}
-        onClick={()=>setSideVisible(!sideVisible)}
+        onClick={() => setSideVisible(!sideVisible)}
       />
       <Sidebar
         visible={sideVisible}
@@ -73,13 +73,15 @@ const HomePage = () => {
         txt='Somos uma holding de empresas de com soluções em tecnologia, automação e inteligência.
         Atuamos no segmento de varejo, “food services”, eventos, entreterimento, empresas de serviço, segurança e organizações; '
       />
-      {data.map(item => (
-        <SectionHome
-          title={item.title}
-          txt={item.text}
-          image={item.img}
-        />
-      ))}
+      {
+        data.map(item => (
+          <SectionHome
+            title={item.title}
+            txt={item.text}
+            image={item.img}
+          />
+        ))
+      }
     </div>
   )
 }

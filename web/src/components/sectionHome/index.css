@@ -23,9 +23,9 @@
 }
 
 .section-img{
-  height: 300px;
+  height: 450px;
   width: 300px; 
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .row{
