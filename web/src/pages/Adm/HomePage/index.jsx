@@ -38,7 +38,7 @@ const HomeController = () => {
       setTitle('')
       setImage('')
       setText('')
-      toast.success('funfando')
+      toast.success('Produto adicionado a home page')
     } catch (err) {
       toast.error(err.response.data.erro)
     }

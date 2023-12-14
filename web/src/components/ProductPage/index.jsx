@@ -4,9 +4,24 @@ import SectionType from "../SectionTypes"
 import Footer from "../footer"
 import { useState } from "react"
 import Sidebar from "../sidebar"
+import { useEffect } from "react"
+import { GetProductById } from "../../api/productPage"
 
 const ProductPage = ({ types, device, product, content }) => {
   const [visible, setVisible] = useState(false)
+  const [produto, setProduto] = useState([])
+  const id = 5
+
+  useEffect(() => {
+    const ListProduct = async () => {
+      const resp = await GetProductById(id)
+
+      console.log(resp)
+      setProduto(resp)
+    }
+
+    ListProduct()
+  }, [])
 
   const CardProduct = (props) => {
     return (
@@ -15,6 +30,7 @@ const ProductPage = ({ types, device, product, content }) => {
       </div>
     )
   }
+                        
 
   return (
     <div className="product-container">
@@ -25,13 +41,13 @@ const ProductPage = ({ types, device, product, content }) => {
       <Sidebar visible={visible} />
       <section className="banner-produto">
         <div className="txt-container">
-          <h1>Sobre o {product}</h1>
-          <p>{content}</p>
+          <h1>Sobre o {produto.name}</h1>
+          <p>{produto.resumo}</p>
         </div>
       </section>
       <section className="content-product">
         <CardProduct height='80%'>
-          <img src={device} height={'80%'} />
+          <img src={device /*  {produto.imgDevice} /*/} height={'80%'} />
         </CardProduct>
         <div className="small-content">
           <CardProduct height='38%'>
@@ -46,17 +62,17 @@ const ProductPage = ({ types, device, product, content }) => {
         <div className="content-device">
           <div className="radius-device">
             <div className="txt-hidden">
-              <h1>Sobre o totem </h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid consequatur ducimus eligendi error? Dignissimos facere corporis, culpa amet fuga a eveniet sit explicabo iste natus eaque. Assumenda itaque sint aperiam!</p>
+              <h1>Sobre o totem {produto.name}</h1>
+              <p>{produto.deviceDescricao}</p>
             </div>
           </div>
           <div className="txt-container">
-            <h1>Sobre o totem </h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid consequatur ducimus eligendi error? Dignissimos facere corporis, culpa amet fuga a eveniet sit explicabo iste natus eaque. Assumenda itaque sint aperiam!</p>
+            <h1>Sobre o totem {produto.name}</h1>
+            <p>{produto.deviceDescricao}</p>
           </div>
         </div>
       </section>
-      {types &&
+      {produto.tipos !== 0 &&
         <SectionType />
       }
       <Footer />
