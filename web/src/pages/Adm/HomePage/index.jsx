@@ -45,11 +45,8 @@ const HomeController = () => {
   }
 
   const ShowImg = () => {
-    if (typeof (image) === 'object') {
-      return URL.createObjectURL(image)
-    } else {
-      return SearchImg(image)
-    }
+    
+      
   }
 
   return (
