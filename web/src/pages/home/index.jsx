@@ -11,43 +11,9 @@ const HomePage = () => {
   const [sideVisible, setSideVisible] = useState(false)
   const [data, setData] = useState([])
 
-  //const data = [
-  //  {
-  //    title: 'PDX',
-  //    content: 'A uGet PDX é uma solução inovadora para a gestão e operação automatizado de A&B  em eventos, praças de alimentação, feiras arenas shows e clubes.',
-  //    img: '',
-  //    direction: true,
-  //    background: '#fff'
-  //  },
-  //  {
-  //    title: 'PDV',
-  //    content: 'A uGet PDX é uma solução inovadora para a gestão e operação automatizado de A&B  em eventos, praças de alimentação, feiras arenas shows e clubes.',
-  //    img: '',
-  //    direction:  false,
-  //    background: '#f8f8f8'
-  //  },
-  //  {
-  //    title: 'NOTES',
-  //    content: 'A uGet PDX é uma solução inovadora para a gestão e operação automatizado de A&B  em eventos, praças de alimentação, feiras arenas shows e clubes.',
-  //    img: '',
-  //    direction: true,
-  //    background: '#fff'
-  //  },
-  //  {
-  //    title: 'ACCESS ID',
-  //    content: 'A uGet PDX é uma solução inovadora para a gestão e operação automatizado de A&B  em eventos, praças de alimentação, feiras arenas shows e clubes.',
-  //    img: '',
-  //    direction:  false,
-  //    background: '#f8f8f8'
-  //  },
-  //  {
-  //    title: 'DONATION',
-  //    content: 'A uGet PDX é uma solução inovadora para a gestão e operação automatizado de A&B  em eventos, praças de alimentação, feiras arenas shows e clubes.',
-  //    img: '',
-  //    direction: true,
-  //    background: '#fff'
-  //  },
-  //]
+  const reverse = (e) => {
+    return e % 2 === 0 ? 'row-reverse' : 'row'
+  }
 
   useEffect(() => {
     const ListProduct = async () => {
@@ -76,6 +42,7 @@ const HomePage = () => {
       {
         data.map(item => (
           <SectionHome
+            direction={reverse(item.id)}
             title={item.title}
             txt={item.text}
             image={item.img}

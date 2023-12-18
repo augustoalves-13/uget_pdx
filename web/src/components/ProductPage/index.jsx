@@ -5,12 +5,28 @@ import Footer from "../footer"
 import { useState } from "react"
 import Sidebar from "../sidebar"
 import { useEffect } from "react"
-import { GetProductById } from "../../api/productPage"
+import { GetImagesById, GetProductById } from "../../api/productPage"
+import { API_URL } from "../../api/config"
 
 const ProductPage = ({ types, device, product, content }) => {
   const [visible, setVisible] = useState(false)
   const [produto, setProduto] = useState([])
-  const id = 5
+  const [imagem1, setImagem1] = useState([])
+  const [imagem2, setImagem2] = useState()
+  const [imagem3, setImagem3] = useState()
+  const id = 2
+
+  const getImages =  async() => {
+    try {
+      const resp = await GetImagesById(id)
+      setImagem1(API_URL +'/'+resp[0].img)
+      setImagem2(API_URL +'/'+resp[1].img)
+      setImagem3(API_URL +'/'+resp[2].img)
+    } catch (err) {
+      console.log(err)
+    }
+  } 
+
 
   useEffect(() => {
     const ListProduct = async () => {
@@ -19,7 +35,7 @@ const ProductPage = ({ types, device, product, content }) => {
       console.log(resp)
       setProduto(resp)
     }
-
+    getImages()
     ListProduct()
   }, [])
 
@@ -30,7 +46,7 @@ const ProductPage = ({ types, device, product, content }) => {
       </div>
     )
   }
-                        
+
 
   return (
     <div className="product-container">
@@ -47,14 +63,14 @@ const ProductPage = ({ types, device, product, content }) => {
       </section>
       <section className="content-product">
         <CardProduct height='80%'>
-          <img src={device /*  {produto.imgDevice} /*/} height={'80%'} />
+          <img src={imagem1} height={'80%'} />
         </CardProduct>
         <div className="small-content">
           <CardProduct height='38%'>
           </CardProduct>
 
           <CardProduct height='38%'>
-
+            <img height={120} src={imagem2}/>
           </CardProduct>
         </div>
       </section>
@@ -65,6 +81,7 @@ const ProductPage = ({ types, device, product, content }) => {
               <h1>Sobre o totem {produto.name}</h1>
               <p>{produto.deviceDescricao}</p>
             </div>
+            <img src={imagem3}/>
           </div>
           <div className="txt-container">
             <h1>Sobre o totem {produto.name}</h1>

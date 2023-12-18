@@ -7,6 +7,7 @@ import { ListProducts, RegisterProduct, SearchImg, SendImg } from "../../../api/
 import { ToastContainer, toast } from "react-toastify"
 import { API_URL } from "../../../api/config"
 import EditModal from "../../../components/Adm/Modals/Edit"
+import upload from '../../../assets/images/adm/bx_upload.svg'
 
 const HomeController = () => {
   const [title, setTitle] = useState('')
@@ -45,8 +46,12 @@ const HomeController = () => {
   }
 
   const ShowImg = () => {
-    
-      
+    if (!image) {
+      return upload
+    } else {
+      return URL.createObjectURL(image)
+    }
+
   }
 
   return (
@@ -57,15 +62,9 @@ const HomeController = () => {
         <Container title='Cadastrar'>
           <section className="content-container">
             <div onClick={File} className="file">
-              {!image &&
-                <svg xmlns="http://www.w3.org/2000/svg" width="51" height="51" viewBox="0 0 51 51" fill="none">
-                  <path d="M23.375 31.875H27.625V19.125H34L25.5 8.5L17 19.125H23.375V31.875Z" fill="#888888" />
-                  <path d="M42.5 38.25H8.5V23.375H4.25V38.25C4.25 40.5939 6.15612 42.5 8.5 42.5H42.5C44.8439 42.5 46.75 40.5939 46.75 38.25V23.375H42.5V38.25Z" fill="#888888" />
-                </svg>
-              }
-              {image &&
-                <img className="file-img" src={ShowImg()} />
-              }
+
+              <img className="file-img" src={ShowImg()} />
+
               <input type="file" id="in-file" onChange={e => setImage(e.target.files[0])} />
             </div>
             <div className="in-container">

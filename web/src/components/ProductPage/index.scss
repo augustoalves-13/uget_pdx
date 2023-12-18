@@ -50,6 +50,7 @@
     background-color: #000;
     display: flex;
     align-items: center;
+    overflow: hidden;
 
     .content-device {
       width: 85%;
@@ -69,6 +70,12 @@
         display: flex;
         align-items: center;
         padding: 0 10%;
+
+        img{
+          position: relative;
+          top: 200px;
+          left: 130px;
+        }
 
         .txt-hidden {
           display: flex;

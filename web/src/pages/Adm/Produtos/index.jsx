@@ -2,10 +2,12 @@ import './index.scss'
 import SidebarAdm from "../../../components/Adm/sidebarAdm"
 import HeaderAdm from "../../../components/Adm/headerAdm"
 import Container from "../../../components/Adm/Container"
-import { PostProduct } from '../../../api/productPage'
+import { PostProduct, SaveImages } from '../../../api/productPage'
 import { useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
 import ModalSections from '../../../components/Adm/Modals/SectionsAdm'
+import upload from '../../../assets/images/adm/bx_upload.svg'
+
 
 const ProductPage = () => {
     const [modalVisible, setModalVisible] = useState(false)
@@ -21,6 +23,9 @@ const ProductPage = () => {
     const AddProduct = async () => {
         try {
             const resp = await PostProduct(nome, resumo, slogan, sobreDevice)
+            const ImagePost = await SaveImages(resp.id , imagem1, imagem2, imagem3)
+
+            console.log(resp.id)
 
             toast.success('Nova Página adicionada com sucesso')
         } catch (err) {
@@ -30,6 +35,16 @@ const ProductPage = () => {
 
     const openFiles = (id) => {
         document.getElementById(id).click()
+    }
+
+    function ShowImage(image) {
+        if (!image) {
+
+            return upload
+
+        } else {
+            return URL.createObjectURL(image) 
+        }
     }
 
     return (
@@ -48,7 +63,7 @@ const ProductPage = () => {
                                 <label>Resumo:</label>
                                 <textarea onChange={e => setResumo(e.target.value)} ></textarea>
                             </div>
-                            <button onClick={()=> setModalVisible(true)} className='more-button'>+</button>
+                            <button onClick={() => setModalVisible(true)} className='more-button'>+</button>
                             <button onClick={AddProduct}>Salvar</button>
                         </div>
                         <div className="in-container">
@@ -67,10 +82,7 @@ const ProductPage = () => {
                                 openFiles('file1')
                             }}
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="51" height="51" viewBox="0 0 51 51" fill="none">
-                                <path d="M23.375 31.875H27.625V19.125H34L25.5 8.5L17 19.125H23.375V31.875Z" fill="#888888" />
-                                <path d="M42.5 38.25H8.5V23.375H4.25V38.25C4.25 40.5939 6.15612 42.5 8.5 42.5H42.5C44.8439 42.5 46.75 40.5939 46.75 38.25V23.375H42.5V38.25Z" fill="#888888" />
-                            </svg>
+                            <img className='file-img' src={ShowImage(imagem1)} />
                             <input id='file1' type="file" onChange={e => setImagem1(e.target.files[0])} />
                         </div>
                         <div
@@ -79,10 +91,7 @@ const ProductPage = () => {
                                 openFiles('file2')
                             }}
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="51" height="51" viewBox="0 0 51 51" fill="none">
-                                <path d="M23.375 31.875H27.625V19.125H34L25.5 8.5L17 19.125H23.375V31.875Z" fill="#888888" />
-                                <path d="M42.5 38.25H8.5V23.375H4.25V38.25C4.25 40.5939 6.15612 42.5 8.5 42.5H42.5C44.8439 42.5 46.75 40.5939 46.75 38.25V23.375H42.5V38.25Z" fill="#888888" />
-                            </svg>
+                            <img className='file-img' src={ShowImage(imagem2)} />
                             <input id='file2' type="file" onChange={e => setImagem2(e.target.files[0])} />
                         </div>
                         <div
@@ -91,17 +100,14 @@ const ProductPage = () => {
                                 openFiles('file3')
                             }}
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="51" height="51" viewBox="0 0 51 51" fill="none">
-                                <path d="M23.375 31.875H27.625V19.125H34L25.5 8.5L17 19.125H23.375V31.875Z" fill="#888888" />
-                                <path d="M42.5 38.25H8.5V23.375H4.25V38.25C4.25 40.5939 6.15612 42.5 8.5 42.5H42.5C44.8439 42.5 46.75 40.5939 46.75 38.25V23.375H42.5V38.25Z" fill="#888888" />
-                            </svg>
+                            <img className='file-img' src={ShowImage(imagem3)} />
                             <input id='file3' type="file" onChange={e => setImagem3(e.target.files[0])} />
                         </div>
                     </section>
                 </Container>
             </div>
             {modalVisible &&
-                <ModalSections onClose={setModalVisible}/>
+                <ModalSections onClose={setModalVisible} />
             }
             <ToastContainer />
         </div>

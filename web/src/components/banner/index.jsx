@@ -17,7 +17,7 @@ const Banner = ({ txt, img }) => {
             <div className="container-banner">
                 <div data-aos='fade-right' className="slide-txt">
                     <img src={img} />
-                    <p>{txt}</p>
+                    <p className='slideTxt'>{txt}</p>
                 </div>
                 <Slider />
             </div>

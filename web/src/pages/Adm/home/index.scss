@@ -30,10 +30,6 @@
       justify-content: space-evenly;
 
       .card-container {
-<<<<<<< HEAD
-=======
-        cursor: pointer;
->>>>>>> 768bdc98ae9a1fd0ac76f2905750a10c020ebbe0
         height: 300px;
         width: 300px;
         border-radius: 5px;
@@ -45,7 +41,6 @@
         justify-content: space-evenly;
         transition: .5s;
 
-<<<<<<< HEAD
         img {
           height: 35%;
         }
@@ -60,22 +55,6 @@
       .card-container:hover {
         box-shadow: 0px 0px 15px 0px #0000002c;
         transform: scale(1.05);
-=======
-        img{
-          height: 80px;
-        }
-
-        p{
-          font-size: 25px;
-          font-weight: 700;
-          color: #606060;  
-        }
-      }
-
-      .card-container:hover{
-        transform: scale(1.05);
-        box-shadow: 0px 0px 15px 0px #0000002c;
->>>>>>> 768bdc98ae9a1fd0ac76f2905750a10c020ebbe0
       }
     }
 
