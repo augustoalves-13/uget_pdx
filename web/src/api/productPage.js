@@ -21,7 +21,7 @@ export async function PostProduct(name, resumo, slogan, descricaoDevice, tipos){
     })
 
     return resp.data
-}
+}   
 
 export async function SaveImages(id, imagem1, imagem2, imagem3){
     const form = new FormData()

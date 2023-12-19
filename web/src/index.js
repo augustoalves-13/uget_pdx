@@ -9,6 +9,7 @@ import LoginPage from './pages/Adm/login';
 import HomeAdm from './pages/Adm/home';
 import HomeController from './pages/Adm/HomePage';
 import ProductPage from './pages/Adm/Produtos';
+import SliderControlle from './pages/Adm/slider';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,6 +23,7 @@ root.render(
         <Route path='/admin/home' element={<HomeAdm/>} />
         <Route path='/admin/controle/home' element={<HomeController/>} />
         <Route path='/admin/controle/produto' element={<ProductPage />} /> 
+        <Route path='/admin/controle/slider' element={<SliderControlle/>} /> 
       </Routes>
     </BrowserRouter>
   </>
