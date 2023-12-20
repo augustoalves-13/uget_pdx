@@ -8,18 +8,18 @@ const Slider = () => {
   const [slide, setSlide] = useState(0);
   const [item, setItem] = useState([])
 
-  useEffect(()=>{
-    const GetProducts = async( ) => {
+  useEffect(() => {
+    const GetProducts = async () => {
       const resp = await ListSliderProducts()
-      
+
       console.log(resp)
       setItem(resp)
     }
 
     GetProducts()
-  },[])
+  }, [])
 
-  const renderArticle = (props) => {
+  const RenderArticle = (props) => {
     return (
       <CSSTransition
         key={props.index}
@@ -29,7 +29,7 @@ const Slider = () => {
         unmountOnExit
       >
         <article className='art'>
-          <img src={props.item}/>
+          <img src={props.item} />
         </article>
       </CSSTransition>
     );
@@ -39,12 +39,22 @@ const Slider = () => {
     <section className="slider-container">
       <div className="images-container">
         {item.map((item, index) => (
-          <renderArticle index={index} item={ API_URL+ '/'+ item.image}/>
+          <CSSTransition
+            key={item.id}
+            in={slide === item.id}
+            timeout={400}
+            classNames='fade'
+            unmountOnExit
+          >
+            <article className='art'>
+              <img src={API_URL +"/"+item.image} />
+            </article>
+          </CSSTransition>
         ))}
       </div>
       <div className="btn-container">
-        {item.map((index) => (
-          <label key={index} onClick={() => setSlide(index)}></label>
+        {item.map((item) => (
+          <label key={item.id} onClick={() => setSlide(item.id)}></label>
         ))}
       </div>
     </section>
