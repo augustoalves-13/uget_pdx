@@ -15,7 +15,7 @@ const SliderControlle = () => {
   const PostSlider = async () => {
     try {
       const resp = await CreateSlider(title, txt)
-      const imgSend = await PutSliderImage(image, resp.id )
+      const imgSend = await PutSliderImage(resp.id, image)
 
       toast.success('Produto cadastrado com sucesso')
     } catch (err) {
